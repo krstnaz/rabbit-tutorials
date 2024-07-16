@@ -13,8 +13,9 @@ public class Producer {
         factory.setHost("localhost");
         factory.setPassword("rmpassword");
         factory.setUsername("rmuser");
-        try (var connection = factory.newConnection();
-             var channel = connection.createChannel()) {
+        var connection = factory.newConnection();
+        var channel = connection.createChannel();
+        try (connection; channel) {
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
             var msg = "Hello world";
             channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());

@@ -11,6 +11,7 @@
   <url>http://maven.apache.org</url>
   <modules>
     <module>hello-world</module>
+    <module>work-queues</module>
   </modules>
 
   <properties>
